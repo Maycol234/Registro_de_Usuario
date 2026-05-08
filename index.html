@@ -5,19 +5,17 @@
   <title>Registro de Usuario</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-   
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: linear-gradient(135deg, #1f4037, #99f2c8);
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       min-height: 100vh;
     }
 
-   
     .card {
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
@@ -26,6 +24,7 @@
       width: 100%;
       max-width: 400px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      margin-top: 20px;
       animation: fadeIn 1s ease-in-out;
     }
 
@@ -92,19 +91,25 @@
       border: 3px solid #fff;
     }
 
+    .registro-card {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 15px;
+      color: #000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .registro-card button {
+      background: crimson;
+      margin-top: 10px;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-  
-    @media (max-width: 480px) {
-      .card {
-        padding: 20px;
-      }
-      h1 {
-        font-size: 1.5em;
-      }
     }
   </style>
 </head>
@@ -115,30 +120,24 @@
     </header>
 
     <main>
-      
       <div class="profile">
-       <img src="img/perfil.jpeg" alt="Imagen de perfil">
-
+        <img src="perfil.jpg" alt="Imagen de perfil">
       </div>
 
       <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required>
+      <input type="text" id="nombre" required>
 
-     
       <label for="password">Contraseña (mínimo 8 caracteres):</label>
-      <input type="password" id="password" name="password" minlength="8" required>
+      <input type="password" id="password" minlength="8" required>
 
-    
       <label for="fecha">Fecha de nacimiento:</label>
-      <input type="date" id="fecha" name="fecha" required>
+      <input type="date" id="fecha" required>
 
-    
       <label for="color">Color favorito:</label>
-      <input type="color" id="color" name="color">
+      <input type="color" id="color">
 
-     
       <label for="pais">País:</label>
-      <input list="paises" id="pais" name="pais" placeholder="Escribe o selecciona">
+      <input list="paises" id="pais" placeholder="Escribe o selecciona">
       <datalist id="paises">
         <option value="México">
         <option value="España">
@@ -148,13 +147,43 @@
         <option value="Estados Unidos">
       </datalist>
 
-    
-      <button type="submit">Registrarse</button>
+      <button onclick="registrar()">Registrarse</button>
     </main>
 
     <footer>
       <p>&copy; 2026 Registro de Usuario</p>
     </footer>
   </div>
+
+
+  <div id="registros"></div>
+
+  <script>
+    function registrar() {
+      const nombre = document.getElementById("nombre").value;
+      const fecha = document.getElementById("fecha").value;
+      const color = document.getElementById("color").value;
+      const pais = document.getElementById("pais").value;
+
+      if(nombre && fecha && pais) {
+        const registrosDiv = document.getElementById("registros");
+
+       
+        const card = document.createElement("div");
+        card.className = "registro-card";
+        card.innerHTML = `
+          <p><strong>Nombre:</strong> ${nombre}</p>
+          <p><strong>Fecha de nacimiento:</strong> ${fecha}</p>
+          <p><strong>Color favorito:</strong> ${color}</p>
+          <p><strong>País:</strong> ${pais}</p>
+          <button onclick="this.parentElement.remove()">Eliminar registro</button>
+        `;
+
+        registrosDiv.appendChild(card);
+      } else {
+        alert("Por favor completa todos los campos obligatorios.");
+      }
+    }
+  </script>
 </body>
 </html>
