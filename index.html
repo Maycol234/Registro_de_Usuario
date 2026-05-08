@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Usuario</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+   
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1f4037, #99f2c8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+   
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    header, footer {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      margin: 0;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 1em;
+    }
+
+    input[type="color"] {
+      padding: 2px;
+      height: 40px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: #fff;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .profile {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+  
+    @media (max-width: 480px) {
+      .card {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <header>
+      <h1>Registro de Usuario</h1>
+    </header>
+
+    <main>
+      
+      <div class="profile">
+        <img src="https://via.placeholder.com/100" alt="Imagen de perfil">
+      </div>
+
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <!-- Contraseña -->
+      <label for="password">Contraseña (mínimo 8 caracteres):</label>
+      <input type="password" id="password" name="password" minlength="8" required>
+
+      <!-- Fecha de nacimiento -->
+      <label for="fecha">Fecha de nacimiento:</label>
+      <input type="date" id="fecha" name="fecha" required>
+
+      <!-- Color favorito -->
+      <label for="color">Color favorito:</label>
+      <input type="color" id="color" name="color">
+
+      <!-- País con datalist -->
+      <label for="pais">País:</label>
+      <input list="paises" id="pais" name="pais" placeholder="Escribe o selecciona">
+      <datalist id="paises">
+        <option value="México">
+        <option value="España">
+        <option value="Argentina">
+        <option value="Colombia">
+        <option value="Chile">
+        <option value="Estados Unidos">
+      </datalist>
+
+    
+      <button type="submit">Registrarse</button>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Registro de Usuario</p>
+    </footer>
+  </div>
+</body>
+</html>
